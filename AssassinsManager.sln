@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{97C75A29-BA50-4BC8-A3CC-2AE760ACB4BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.DiscordBot", "AssassinsManager.DiscordBot\AssassinsManager.DiscordBot.csproj", "{064C5418-D9B2-4FE0-9F0B-A23DF42768CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{24E585D5-F53A-4B08-9595-8C2DC0146E2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.GameApi", "AssassinsManager.GameApi\AssassinsManager.GameApi.csproj", "{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{477664BA-25E2-4A96-921E-ACDEF28693CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.EFCore", "AssassinsManager.EFCore\AssassinsManager.EFCore.csproj", "{7A28EF26-A10D-483A-861C-7DE16681D1DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.Logic", "AssassinsManager.Logic\AssassinsManager.Logic.csproj", "{0731CA7C-0442-4C80-A5CD-2EDF446E7E62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{064C5418-D9B2-4FE0-9F0B-A23DF42768CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064C5418-D9B2-4FE0-9F0B-A23DF42768CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064C5418-D9B2-4FE0-9F0B-A23DF42768CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064C5418-D9B2-4FE0-9F0B-A23DF42768CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A28EF26-A10D-483A-861C-7DE16681D1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A28EF26-A10D-483A-861C-7DE16681D1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A28EF26-A10D-483A-861C-7DE16681D1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A28EF26-A10D-483A-861C-7DE16681D1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0731CA7C-0442-4C80-A5CD-2EDF446E7E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0731CA7C-0442-4C80-A5CD-2EDF446E7E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0731CA7C-0442-4C80-A5CD-2EDF446E7E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0731CA7C-0442-4C80-A5CD-2EDF446E7E62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{064C5418-D9B2-4FE0-9F0B-A23DF42768CF} = {97C75A29-BA50-4BC8-A3CC-2AE760ACB4BC}
+		{0E90C8FB-6145-4BE5-8E02-0BA5C41D9DF3} = {24E585D5-F53A-4B08-9595-8C2DC0146E2A}
+		{7A28EF26-A10D-483A-861C-7DE16681D1DA} = {477664BA-25E2-4A96-921E-ACDEF28693CE}
+		{0731CA7C-0442-4C80-A5CD-2EDF446E7E62} = {24E585D5-F53A-4B08-9595-8C2DC0146E2A}
+	EndGlobalSection
+EndGlobal
