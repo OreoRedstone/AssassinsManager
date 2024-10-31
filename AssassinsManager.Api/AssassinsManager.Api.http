@@ -1,0 +1,6 @@
+@AssassinsManager.Api_HostAddress = http://localhost:5187
+
+GET {{AssassinsManager.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

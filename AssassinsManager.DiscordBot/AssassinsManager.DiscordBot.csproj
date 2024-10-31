@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AssassinsManager.GameApi\AssassinsManager.GameApi.csproj" />
+    <ProjectReference Include="..\AssassinsManager.Api\AssassinsManager.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
