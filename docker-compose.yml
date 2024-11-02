@@ -1,0 +1,24 @@
+services:
+  api:
+    image: goam/goam-api
+    build:
+      context: .
+      dockerfile: Api.Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 80:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  discord:
+    image: goam/goam-discord
+    build:
+      context: .
+      dockerfile: DiscordBot.Dockerfile
+    depends_on:
+      - api
+
+  db:
+    image: mysql
+    # Not finished, need to configure database and link to other services.
