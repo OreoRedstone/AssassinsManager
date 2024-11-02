@@ -50,3 +50,4 @@ msbuild.wrn
 .vs/
 
 appsettings.json
+mysql/

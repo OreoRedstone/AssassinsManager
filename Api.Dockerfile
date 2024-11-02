@@ -6,9 +6,9 @@ WORKDIR /src/AssassinsManager.Api
 RUN dotnet build -o /app
 RUN dotnet publish -o /publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 as base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-noble-chiseled as base
 COPY --from=build /publish /app
 ENV ASPNETCORE_HTTP_PORTS 80
-WORKDIR /app
 EXPOSE 80
-CMD [ "./AssassinsManager.Api" ]
+WORKDIR /app
+ENTRYPOINT [ "./AssassinsManager.Api" ]

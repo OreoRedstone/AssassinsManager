@@ -4,7 +4,7 @@ WORKDIR /src/AssassinsManager.DiscordBot
 RUN dotnet build -o /app
 RUN dotnet publish -o /publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 as base
+FROM mcr.microsoft.com/dotnet/runtime:8.0-noble-chiseled as base
 COPY --from=build /publish /app
 WORKDIR /app
-CMD [ "./AssassinsManager.DiscordBot" ]
+ENTRYPOINT [ "./AssassinsManager.DiscordBot" ]
