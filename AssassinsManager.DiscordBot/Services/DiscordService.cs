@@ -1,6 +1,6 @@
-using System;
 using System.Reflection;
 using System.Text;
+using AssassinsManager.DiscordBot.Services.Interfaces;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
@@ -10,10 +10,10 @@ namespace AssassinsManager.DiscordBot.Services;
 
 public class DiscordService(IConfiguration config, DiscordSocketClient client, IServiceProvider serviceProvider) : IDiscordService
 {
-    private readonly string connectionString = config.GetConnectionString("DiscordBot");
+    private readonly string connectionString = config.GetConnectionString("DiscordBot") ?? "";
     private readonly DiscordSocketClient _client = client;
-    private InteractionService _interactionService;
-    private IServiceProvider _serviceProvider = serviceProvider;
+    private readonly InteractionService _interactionService = new(client);
+    private readonly IServiceProvider _serviceProvider = serviceProvider;
 
     public async Task ConfigureAsync()
     {
@@ -23,8 +23,6 @@ public class DiscordService(IConfiguration config, DiscordSocketClient client, I
 
         await _client.LoginAsync(TokenType.Bot, connectionString);
         await _client.StartAsync();
-
-        _interactionService = new InteractionService(_client);
     }
 
     private Task SlashCommandExecuted(SocketSlashCommand command)
@@ -66,9 +64,4 @@ public class DiscordService(IConfiguration config, DiscordSocketClient client, I
         Console.WriteLine(message.ToString());
         return Task.CompletedTask;
     }
-}
-
-public interface IDiscordService
-{
-    Task ConfigureAsync();
 }

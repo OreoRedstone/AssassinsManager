@@ -1,4 +1,5 @@
 using AssassinsManager.Core.Services;
+using AssassinsManager.Core.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<DatabaseService>();
+builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 
 var app = builder.Build();
 
-app.Services.GetRequiredService<DatabaseService>();
+app.Services.GetRequiredService<IDatabaseService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

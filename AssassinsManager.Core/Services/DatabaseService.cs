@@ -1,4 +1,4 @@
-using System;
+using AssassinsManager.Core.Services.Interfaces;
 using AssassinsManager.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace AssassinsManager.Core.Services;
 
-public class DatabaseService
+public class DatabaseService : IDatabaseService
 {
     private readonly string connectionString;
 
@@ -18,7 +18,7 @@ public class DatabaseService
         {
             try
             {
-                MigrateDatabase();
+                InitialConfigure();
                 dbStarted = true;
                 Console.WriteLine("Successfully connected to database.");
             }
@@ -29,14 +29,14 @@ public class DatabaseService
         }
     }
 
-    public void MigrateDatabase()
+    private void InitialConfigure()
     {
         using var context = GetContext();
 
         context.Database.Migrate();
     }
 
-    public AssassinContext GetContext()
+    private AssassinContext GetContext()
         => new(new DbContextOptionsBuilder<AssassinContext>()
                 .UseMySQL(connectionString)
                 .Options);

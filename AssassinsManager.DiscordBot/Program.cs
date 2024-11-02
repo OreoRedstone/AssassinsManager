@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AssassinsManager.DiscordBot.Services;
+using AssassinsManager.DiscordBot.Services.Interfaces;
 using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +10,7 @@ var serviceCollection = new ServiceCollection();
 
 var config = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.json", optional: true)
     .AddEnvironmentVariables()
     .Build();
 

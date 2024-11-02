@@ -9,9 +9,8 @@ services:
       - db
     ports:
       - 80:80
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings:MySql=server=assassinsmanager-db;user=root;password=RandomPassword;database=assassinsmanager
+    env_file:
+      - ./api.env
 
   discord:
     container_name: assassinsmanager-discord
@@ -21,11 +20,13 @@ services:
       dockerfile: DiscordBot.Dockerfile
     depends_on:
       - api
+    env_file:
+      - ./discord.env
 
   db:
     container_name: assassinsmanager-db
     image: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=RandomPassword
+    env_file:
+      - ./api.env
     volumes:
       - ./mysql:/var/lib/mysql
