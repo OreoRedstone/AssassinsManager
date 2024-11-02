@@ -1,5 +1,6 @@
 services:
   api:
+    container_name: assassinsmanager-api
     image: goam/goam-api
     build:
       context: .
@@ -10,8 +11,10 @@ services:
       - 80:80
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings:MySql=server=assassinsmanager-db;user=root;password=RandomPassword;database=assassinsmanager
 
   discord:
+    container_name: assassinsmanager-discord
     image: goam/goam-discord
     build:
       context: .
@@ -20,5 +23,9 @@ services:
       - api
 
   db:
+    container_name: assassinsmanager-db
     image: mysql
-    # Not finished, need to configure database and link to other services.
+    environment:
+      - MYSQL_ROOT_PASSWORD=RandomPassword
+    volumes:
+      - ./mysql:/var/lib/mysql

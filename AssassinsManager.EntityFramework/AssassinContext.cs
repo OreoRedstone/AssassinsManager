@@ -1,12 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace AssassinsManager.EntityFramework;
 
 public class AssassinContext(DbContextOptions<AssassinContext> options) : DbContext(options)
 {
-    public static AssassinContext FromMySqlConnectionString(string connectionString)
-         => new (new DbContextOptionsBuilder<AssassinContext>()
-                        .UseMySql(
-                            connectionString,
-                            new MySqlServerVersion(new Version(9, 1, 0))).Options);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if(!optionsBuilder.IsConfigured)
+            throw new Exception("AssassinContext not properly configured.");
+    }
+}
+
+public class AssassinContextFactory : IDesignTimeDbContextFactory<AssassinContext>
+{
+    public AssassinContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<AssassinContext>();
+        optionsBuilder.UseMySQL("server=assassinsmanager-db;user=root;password=RandomPassword;database=assassinsmanager");
+
+        return new AssassinContext(optionsBuilder.Options);
+    }
 }

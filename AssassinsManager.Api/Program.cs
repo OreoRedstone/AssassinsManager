@@ -1,3 +1,5 @@
+using AssassinsManager.Core.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<DatabaseService>();
+
 var app = builder.Build();
+
+app.Services.GetRequiredService<DatabaseService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
