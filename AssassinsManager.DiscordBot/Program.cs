@@ -17,6 +17,7 @@ var config = new ConfigurationBuilder()
 serviceCollection
     .AddSingleton<IConfiguration>(_ => config)
     .AddSingleton<DiscordSocketClient>()
+    .AddSingleton<IGameApiService, GameApiService>()
     .AddSingleton<IDiscordService, DiscordService>();
 
 var serviceProvider = serviceCollection.BuildServiceProvider();

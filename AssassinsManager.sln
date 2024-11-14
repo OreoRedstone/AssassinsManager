@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.EntityFram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.Core", "AssassinsManager.Core\AssassinsManager.Core.csproj", "{672DAF2F-E75B-4B4E-8AF7-86D1E4289C97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssassinsManager.DiscordBot.EntityFramework", "AssassinsManager.DiscordBot.EntityFramework\AssassinsManager.DiscordBot.EntityFramework.csproj", "{93D2D633-7CA1-4BB6-931F-0F46B657B54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{672DAF2F-E75B-4B4E-8AF7-86D1E4289C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{672DAF2F-E75B-4B4E-8AF7-86D1E4289C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{672DAF2F-E75B-4B4E-8AF7-86D1E4289C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D2D633-7CA1-4BB6-931F-0F46B657B54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D2D633-7CA1-4BB6-931F-0F46B657B54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D2D633-7CA1-4BB6-931F-0F46B657B54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D2D633-7CA1-4BB6-931F-0F46B657B54C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{815C93D9-587D-426F-AD43-0CB69B46CE58} = {97C75A29-BA50-4BC8-A3CC-2AE760ACB4BC}
 		{476B48B6-2A4A-4F88-8A72-B402D5607C3C} = {477664BA-25E2-4A96-921E-ACDEF28693CE}
 		{672DAF2F-E75B-4B4E-8AF7-86D1E4289C97} = {24E585D5-F53A-4B08-9595-8C2DC0146E2A}
+		{93D2D633-7CA1-4BB6-931F-0F46B657B54C} = {477664BA-25E2-4A96-921E-ACDEF28693CE}
 	EndGlobalSection
 EndGlobal

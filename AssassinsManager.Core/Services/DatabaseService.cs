@@ -36,8 +36,8 @@ public class DatabaseService : IDatabaseService
         context.Database.Migrate();
     }
 
-    private AssassinContext GetContext()
-        => new(new DbContextOptionsBuilder<AssassinContext>()
+    private AssassinCoreContext GetContext()
+        => new(new DbContextOptionsBuilder<AssassinCoreContext>()
                 .UseMySQL(connectionString)
                 .Options);
 }
