@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
 COPY ./AssassinsManager.DiscordBot ./src/AssassinsManager.DiscordBot
+COPY ./AssassinsManager.DiscordBot.EntityFramework ./src/AssassinsManager.DiscordBot.EntityFramework
 WORKDIR /src/AssassinsManager.DiscordBot
 RUN dotnet build -o /app
 RUN dotnet publish -o /publish
