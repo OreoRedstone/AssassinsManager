@@ -1,4 +1,6 @@
 using AssassinsManager.Api.Controllers;
+using AssassinsManager.Core.Jobs;
+using AssassinsManager.EntityFramework;
 
 namespace AssassinsManager.Api.Services;
 
