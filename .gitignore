@@ -48,6 +48,6 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
-
-appsettings.json
 mysql/
+
+appsettings.Development.json

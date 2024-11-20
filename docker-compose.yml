@@ -1,6 +1,6 @@
 services:
   nginx:
-    container_name: assasins-nginx
+    container_name: assassins-nginx
     image: nginx
     ports:
       - 80:80
@@ -43,3 +43,6 @@ services:
       - ./api.env
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./db-config:/docker-entrypoint-initdb.d/:ro
+    # ports:
+    #   - 3306:3306
