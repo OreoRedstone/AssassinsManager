@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using Quartz;
 using Quartz.AspNetCore;
 
@@ -25,8 +26,21 @@ public static class Extensions
 
     public static IHost MigrateDatabase<T>(this IHost host) where T : DbContext
     {
-        using var context = host.GetScopedService<T>();
-        context.Database.Migrate();
+        bool connected = false;
+        while(!connected)
+        {
+            try
+            {
+                using var context = host.GetScopedService<T>();
+                context.Database.Migrate();
+                Console.WriteLine("Successfully connected to database.");
+                connected = true;
+            }
+            catch (MySqlException)
+            { 
+                Console.WriteLine("Database not ready, retrying...");
+            }
+        }
 
         return host;
     }
