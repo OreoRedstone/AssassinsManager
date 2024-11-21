@@ -12,7 +12,8 @@ services:
     container_name: assassins-website
     image: oga/oga-site
     build:
-      context: ./assassins-website
+      context: .
+      dockerfile: Website.Dockerfile
 
   api:
     container_name: assassinsmanager-api
