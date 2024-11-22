@@ -26,7 +26,8 @@ public class AssassinContextFactory : IDesignTimeDbContextFactory<AssassinCoreCo
     public AssassinCoreContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<AssassinCoreContext>();
-        optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=RandomPassword;database=assassinsmanager");
+        var conString = "server=localhost;port=3306;user=root;password=RandomPassword;database=assassinsmanager";
+        optionsBuilder.UseMySql(conString, ServerVersion.AutoDetect(conString));
 
         return new AssassinCoreContext(optionsBuilder.Options);
     }

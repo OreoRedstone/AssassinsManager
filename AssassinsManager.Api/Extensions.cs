@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using Quartz;
 using Quartz.AspNetCore;
 
@@ -14,7 +14,10 @@ public static class Extensions
         {
             q.UsePersistentStore(store =>
             {
-                store.UseMySql(builder.Configuration.GetConnectionString("MySqlQuartz"));
+                store.UseMySqlConnector(config => 
+                {
+                    config.ConnectionString = builder.Configuration.GetConnectionString("MySqlQuartz");
+                });
                 store.UseNewtonsoftJsonSerializer();
             });
         }).AddQuartzServer(options =>

@@ -11,7 +11,7 @@ public class AnnouncementController(ISchedulerService schedulerService) : Contro
 {
     private readonly ISchedulerService _schedulerService = schedulerService;
 
-    [HttpGet]
+    [HttpGet("api/announcements/{name}")]
     public async Task<IActionResult> GetAnnouncement(string name)
     {
         return Ok(await _schedulerService.GetTrigger(name));

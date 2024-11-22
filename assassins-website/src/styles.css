@@ -1,1 +1,428 @@
 /* You can add global styles to this file, and also import other style files */
+/* ############################################################################################################################ */
+/* ######################################################## constants ######################################################### */
+/* ############################################################################################################################ */
+
+:root {
+    --oga-black:     #000000;
+    --oga-dark:      #171717;
+    --oga-mid:       #222222;
+    --oga-light:     #444444;
+    --oga-text-white:#DDDDDD;
+    --oga-white:     #FFFFFF;
+    --oga-red:       #C70F0F;
+
+    --oga-title: "Orbitron", sans-serif;
+    --oga-text: 'Titillium Web', sans-serif;
+    --oga-serif: "EB Garamond", serif;
+}
+
+/* ############################################################################################################################ */
+/* ######################################################## everywhere ######################################################## */
+/* ############################################################################################################################ */
+
+html{
+    scroll-behavior: smooth; /* scrolling snaps to pages */
+    scroll-snap-type: y proximity;
+/** scroll-padding-top: responsive; */
+}
+
+body {
+    background-color: var(--oga-dark); /* dark background */
+
+    font-family: var(--oga-text); /* default font */
+    color: var(--oga-text-white);
+
+    display: grid; /* navbar above body */
+    grid-template-rows: auto auto;
+
+    margin: 0px; /* no margins */
+}
+
+a {
+    color: var(--oga-white); /* no link decoration */
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--oga-title); /* heading font */
+    color: var(--oga-white);
+
+    margin: 0;
+}
+h1 {
+    margin-top: 20px;
+}
+
+.redirect {
+    font-family: var(--oga-title);
+    color: var(--oga-light);
+    text-align: center;
+    margin-top: 1em;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    html {
+        scroll-padding-top: 75px; /* respond to navbar sizing */
+    }
+}
+/* Mobile */
+@media (max-width: 900px) {
+    html {
+        scroll-padding-top: 115px; /* respond to navbar sizing */
+    }
+}
+
+/* ############################################################################################################################ */
+/* ######################################################### reusable ######################################################### */
+/* ############################################################################################################################ */
+
+/* wraps page body */
+.wrapper {
+    margin: 0.5em; /* margin around page - expects content to have 0.5em margin */
+    margin-bottom: 1em;
+/** margin-top: responsive; */
+}
+
+/* scrollable page */
+section {
+    width: 100%; /* fill at least the window */
+/** min-height: responsive; */
+}
+
+/* wraps content */
+.content {
+    padding: 1em; /* coloured box with padding and margin */
+    margin: 0.5em;
+    background-color: var(--oga-mid);
+}
+.content h2, h3 {
+    margin: 0;
+}
+.content p {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+.content ul {
+    margin: 0;
+    padding-left: 1.3em;
+}
+
+.button {
+    display: flex; /* center align text */
+    justify-content: center;
+
+    padding: 1em; /* buttons have no top, and large bottom margins */
+    margin: 0 0.5em 1em 0.5em; 
+
+    border-bottom-width: 2px; /* white bottom border */
+    border-bottom-style: solid;
+    border-color: var(--oga-white);
+
+    background-color: var(--oga-mid); /* grey background */
+}
+.button:hover  { background-color: var(--oga-light); }
+.button:active { background-color: var(--oga-red); }
+
+/* centers content horizontally */
+.center_h {
+    display: flex;
+    justify-content: center;
+}
+
+/* centers content vertically */
+.center_v {
+    display: flex;
+    justify-content: center;
+}
+
+.rrc_a, .rrc_l, .rrc_r, .rrc_c, .rcr_a, .rcr_l, .rcr_r, .rcr_c {
+    display: grid;
+/** grid-template-columns: responsive; */
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    .wrapper {
+        margin-top: calc(75px + 0.5em); /* respond to navbar sizing */
+    }
+    .rrc_a { grid-template-columns: auto auto; }
+    .rrc_l { grid-template-columns: 1fr  auto; }
+    .rrc_r { grid-template-columns: auto 1fr; }
+    .rrc_c { grid-template-columns: 1fr  1fr; }
+}
+/* Mobile */
+@media (max-width: 900px) {
+    .wrapper {
+        margin-top: calc(115px + 0.5em); /* respond to navbar sizing */
+    }
+    .rcr_a { grid-template-columns: auto auto; }
+    .rcr_l { grid-template-columns: 1fr  auto; }
+    .rcr_r { grid-template-columns: auto 1fr; }
+    .rcr_c { grid-template-columns: 1fr  1fr; }
+}
+
+/* ############################################################################################################################ */
+/* ########################################################## navbar ########################################################## */
+/* ############################################################################################################################ */
+
+nav {    
+    position: fixed; /* fixed to top of screen */
+    width: 100%;
+
+    background-color: var(--oga-black); /* black background */
+
+    z-index: 999; /* display on top */
+}
+    
+#navbar_logo {
+    display: grid; /* logo then title */
+    grid-template-columns: auto 1fr;
+}
+
+#navbar_logo img {
+    width: 72px; /* fix logo size */
+    align-self:flex-end;
+}
+
+#navbar_menu {   
+    padding: 0; /* surround buttons */
+/** margin: responsive; */
+/** gap: responsive; */
+
+    display: grid; /* buttons in a row */
+    grid-template-columns: repeat(6, auto);
+    
+}
+
+.navbar_button {
+    border-bottom-width: 2px; /* white bottom border */
+    border-bottom-style: solid;
+    border-color: var(--oga-white);
+    
+    padding: 0; /* no padding */
+
+    list-style-type: none; /* no bullet points */
+}
+.navbar_button:hover  { background-color: var(--oga-light); }
+.navbar_button:active { background-color: var(--oga-red); }
+
+.navbar_button li {
+    text-align: center;
+/** padding: responsive; */
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    #navbar_menu {
+        margin: 1em; /* spread out buttons */
+        gap: 1em;
+    }
+    .navbar_button li {
+        padding: 0.5em; /* pad out text */
+    }
+}
+/* Mobile */
+@media (max-width: 900px) {
+    #navbar_wrapper {
+        text-align: center;
+        display: grid;
+        place-items: center;
+        width: 100%;
+    }
+    #navbar_menu {
+        margin: 0 1em 0 1em; /* remove top and bottom margins */
+        gap: 0.25em; /* buttons closer together */
+    }
+    .navbar_button li {
+        padding: 0.5em 1em 0.5em 1em; /* remove left and right padding */
+    }
+}
+/* very thin window correction */
+@media (max-width: 440px) { .navbar_logo img { margin-top: 1em; } }
+
+/* ############################################################################################################################ */
+/* ########################################################### home ########################################################### */
+/* ############################################################################################################################ */
+
+#home {
+    display: grid; /* spacer, logo, tagline, buttons, spacer */
+    grid-template-rows: 1fr auto auto auto 1fr;
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+}
+
+#home_background {
+    position: absolute; /* stick to page and cover */
+    object-fit: cover;
+    object-position: top;
+    margin-left: -0.5em; /* negate margin from wrapper */
+
+    width: 100%; /* fit image to page */
+/** height: responsive; */
+    z-index: -999; /* render behind everything else */
+}
+
+#home_logo {
+    display: flex; /* center logo */
+    align-self: center;
+
+    max-width: 80%;
+    width: 50vh; /* logo half page height */
+}
+
+#home_tagline {
+    margin: 0 0 0.5em 0; /* no margin between tagline and logo */
+
+    text-align: center; /* center text */
+}
+
+#home_buttons {
+    display: grid; /* buttons side by side */
+    grid-template-columns: 1fr 1fr;
+
+/** margin-left: responsive; */
+/** margin-right: responsive; */
+}
+
+#home_buttons h3 {
+    margin: 0; /* text has no margin */
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    #home_background {
+        height: calc(100vh - 76px);
+    }
+    #home {
+        height: calc(100vh - 76px);
+    }
+    #home_buttons {
+        margin-left: 6em;
+        margin-right: 6em;
+    }
+}
+/* Mobile */
+@media (max-width: 900px) {
+    #home_background {
+        height: calc(100vh - 116px);
+    }
+    #home {
+        height: calc(100vh - 116px);
+    }
+    #home_buttons {
+        margin-left: 3em;
+        margin-right: 3em;
+    }
+}
+
+/* ############################################################################################################################ */
+/* ######################################################## sections ########################################################## */
+/* ############################################################################################################################ */
+
+/* Sections not including "home" */
+section:not(:first-of-type) { 
+    display: flex;
+    flex-direction: column;
+}
+
+section:not(:first-of-type) > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+section:not(:first-of-type) > div > .content {
+    width: 45%;
+    flex-grow: 1;
+}
+
+section:not(:first-of-type) > .content {
+    flex-direction: column; /* fix text arrangement if subclass is text */
+}
+
+/* ############################################################################################################################ */
+/* ########################################################### forms ########################################################## */
+/* ############################################################################################################################ */
+
+form {
+    min-width: 40vw; 
+    margin-top: -0.5em;
+}
+form p {
+    display: grid; /* label left, input right, text below */
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "label input" "text text";
+}
+form span {
+    grid-area: text;
+}
+
+label {
+    grid-area: label; 
+
+    min-width: 102px;
+    margin-right: 0.5em;
+}
+input, select {
+    grid-area: input;
+
+    margin: 0;
+    padding-left: 0.4em;
+    border: 0;
+
+    background-color: var(--oga-dark);
+    color: var(--oga-text-white);
+    font-family: var(--oga-text);
+}
+input[type="submit"] {
+    margin-top: 0.5em; /* login/sign-up button */
+    width: 100%;
+
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+
+    font-size: large;
+
+    border-bottom-width: 2px; /* white bottom border */
+    border-bottom-style: solid;
+    border-color: var(--oga-white);
+}
+input[type="submit"]:hover { background-color: var(--oga-light); }
+input[type="submit"]:active { background-color: var(--oga-red); }
+
+textarea {
+    margin: 0;
+    padding-left: 0.4em;
+    border: 0;
+    resize: none;
+
+    background-color: var(--oga-dark);
+    color: var(--oga-text-white);
+    font-family: var(--oga-text);
+    font-size: smaller;
+}
+
+.form_multichoice {
+    background-color: var(--oga-dark);
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+/* ############################################################################################################################ */
+/* ########################################################## account ######################################################### */
+/* ############################################################################################################################ */
+
+.logout_span {
+    margin-top: 1em;
+}
+.logout_span h3 {
+    display: grid;
+    justify-content: center;
+    width: 140px;
+}
+
+.manage_buttons {
+    margin: 0.5em 0 -0.5em 0;
+    min-width: 258px;
+}

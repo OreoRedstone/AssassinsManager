@@ -19,7 +19,15 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<AssassinCoreContext>(options => {
-    options.UseMySQL(builder.Configuration.GetConnectionString("MySql"));
+    var conString = builder.Configuration.GetConnectionString("MySql");
+    options.UseMySql(conString, ServerVersion.AutoDetect(conString),
+    sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
+    });
 });
 
 builder.Services.AddSingleton<ISchedulerService, SchedulerService>();

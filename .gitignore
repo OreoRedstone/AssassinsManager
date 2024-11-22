@@ -49,5 +49,6 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 mysql/
+mariadb/
 
 appsettings.Development.json
