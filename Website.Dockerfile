@@ -1,10 +1,9 @@
-FROM node AS build
+FROM node:slim AS build
 WORKDIR /app
-COPY assassins-website/package*.json ./
+COPY assassins-website/ ./
 RUN npm install
 RUN npm install -g @angular/cli
-COPY assassins-website/ ./
-RUN ng build --configuration=production
-FROM nginx AS deploy
-COPY --from=build app/dist/assassins-website /usr/share/nginx/html
+RUN ng build
+FROM nginx:1.27.2-alpine-slim AS deploy
+COPY --from=build app/dist/assassins-website/browser /usr/share/nginx/html
 EXPOSE 80
