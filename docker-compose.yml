@@ -1,17 +1,15 @@
-services:      
+services:
   website:
     container_name: assassins-website
-    image: oga/oga-site
-    ports:
-      - 443:443
+    image: oga/oga-site:latest
     build:
       context: .
       dockerfile: Website.Dockerfile
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./assassins-website/nginx.conf:/etc/nginx/nginx.conf:ro
       - /etc/letsencrypt/:/etc/letsencrypt/:ro
     networks:
-      - nginx
+      - nginx-router
     # depends_on:
       # - api
 
@@ -26,7 +24,7 @@ services:
     env_file:
       - ./api.env
     networks:
-      - nginx
+      - nginx-router
 
   discord:
     container_name: assassinsmanager-discord
@@ -39,7 +37,7 @@ services:
     env_file:
       - ./discord.env
     networks:
-      - nginx
+      - nginx-router
 
   db:
     container_name: assassinsmanager-db
@@ -49,8 +47,6 @@ services:
     volumes:
       - ./mariadb:/var/lib/mysql
       - ./db-config:/docker-entrypoint-initdb.d/:ro
-    # ports:
-    #   - 3306:3306
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       start_period: 10s
@@ -58,8 +54,9 @@ services:
       timeout: 5s
       retries: 3
     networks:
-      - nginx
+      - nginx-router
   
 networks:
-  nginx:
-    name: nginx-network
+  nginx-router:
+    name: nginx-router
+    external: true
